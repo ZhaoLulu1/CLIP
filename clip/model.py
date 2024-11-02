@@ -338,6 +338,7 @@ class CLIP(nn.Module):
         return self.visual.conv1.weight.dtype
 
     def encode_image(self, image):
+        print("image shape here: ", image.shape)
         return self.visual(image.type(self.dtype))
 
     def encode_text(self, text):
@@ -369,7 +370,8 @@ class CLIP(nn.Module):
         logits_per_text = logits_per_image.t()
 
         # shape = [global_batch_size, global_batch_size]
-        return logits_per_image, logits_per_text
+        # return logits_per_image, logits_per_text
+        return image_features, text_features
 
 
 def convert_weights(model: nn.Module):
