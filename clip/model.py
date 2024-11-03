@@ -338,7 +338,7 @@ class CLIP(nn.Module):
         return self.visual.conv1.weight.dtype
 
     def encode_image(self, image):
-        print("image shape here: ", image.shape)
+        # print("image shape here: ", image.shape)
         return self.visual(image.type(self.dtype))
 
     def encode_text(self, text):
